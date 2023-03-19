@@ -1,0 +1,112 @@
+h1 {
+  display: block;
+  margin: 0 auto 10px;
+  color: #f8b62d;
+  text-align: center;
+}
+h2 {
+  text-align: center;
+  color: #157347;
+  text-transform: capitalize;
+}
+hr {
+  border: 2px solid #157347;
+  border-radius: 2px;
+  opacity: inherit;
+}
+
+.current-time {
+  text-align: center;
+  font-size: 16px;
+}
+.temp-box {
+  margin: 36px auto;
+  text-align: center;
+}
+.current-temp-number {
+  font-size: 42px;
+  display: inline;
+  margin: 0 5px;
+}
+.degree {
+  display: block;
+  margin: 0 auto;
+}
+.current-temp {
+  font-size: 20px;
+  position: relative;
+  top: -15px;
+}
+.current-temp:hover {
+  cursor: pointer;
+}
+.properties-box {
+  display: block;
+  margin: 44px auto;
+  text-align: center;
+  font-size: 14px;
+}
+.container {
+  margin: 0 auto;
+  display: block;
+  padding: 20px;
+  max-width: 600px;
+}
+.card-body {
+  border: 2px solid;
+  border-radius: 5px;
+}
+.city-output {
+  margin: 20px auto 0px;
+}
+.search-row {
+  text-align: center;
+}
+.city-search {
+  margin: 5px auto;
+  padding: 0;
+  border-radius: 10px;
+  text-align: center;
+}
+.search-button {
+  padding: 0;
+  height: 26px;
+  margin: 0 5px;
+  width: 100px;
+  border-radius: 10px;
+  border-color: #157347;
+  text-align: center;
+  vertical-align: baseline;
+}
+.current-button {
+  padding: 0;
+  height: 26px;
+  margin: 0 5px;
+  width: 100px;
+  border-radius: 10px;
+  border-color: #5c636a;
+  text-align: center;
+  vertical-align: baseline;
+}
+.current-weather-icon {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+}
+.current-weather-icon:hover {
+  scale: 120%;
+  transition: all 200ms ease-in;
+}
+.forecast {
+  text-align: center;
+  font-size: 24px;
+}
+.forecast-icon {
+  display: block;
+  margin: 0 auto;
+  width: 75px;
+}
+.forecast-icon:hover {
+  scale: 120%;
+  transition: all 200ms ease-in;
+}
