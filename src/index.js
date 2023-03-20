@@ -25,6 +25,7 @@ let currentDay = days[now.getDay()];
 h3.innerHTML = `Today is ${currentDay}, ${currentHour}:${currentMinute}`;
 
 /* The following is for the city search input */
+
 function searchCity(event) {
   event.preventDefault();
   let apiKey = "b3967db1b6cb07823c5b7912b9ec0e6c";
@@ -56,6 +57,8 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   currentIcon.setAttribute("alt", response.data.weather[0].description);
+  fahrenheitTemp = response.data.main.temp;
+  windImperial = response.data.wind.speed;
 }
 let citySearchInput = document.querySelector("#search-form");
 citySearchInput.addEventListener("submit", searchCity);
@@ -88,6 +91,37 @@ function updateCurrentCity(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   currentIcon.setAttribute("alt", response.data.weather[0].description);
+  fahrenheitTemp = response.data.main.temp;
+  windImperial = response.data.wind.speed;
 }
+
 let currentCityInput = document.querySelector("#current-button");
 currentCityInput.addEventListener("click", runNavigator);
+
+function convertCelcius(event) {
+  event.preventDefault();
+  let celciusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  let temperatureElement = document.querySelector("#current-temp-number");
+  temperatureElement.innerHTML = Math.round(celciusTemp) + "°";
+  let windElement = document.querySelector("#wind-prop");
+  windElement.innerHTML = Math.round(windImperial * 1.609) + "km/h";
+}
+function convertFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp-number");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp) + "°";
+  let windElement = document.querySelector("#wind-prop");
+  windElement.innerHTML = Math.round(windImperial) + " mph";
+}
+
+let fahrenheitTemp = null;
+let windImperial = null;
+
+let convertToC = document.querySelector("#temp-c");
+convertToC.addEventListener("click", convertCelcius);
+
+let convertToF = document.querySelector("#temp-f");
+convertToF.addEventListener("click", convertFahrenheit);
+
+/*Final tweaks to make: make Austin default city on refresh, consolidate JS code with element updates. Remove underline from wind, humidity, visbility.
+ */
