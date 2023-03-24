@@ -100,7 +100,7 @@ a {
   scale: 120%;
   transition: all 200ms ease-in;
 }
-.forecast {
+.forecast-form {
   text-align: center;
 }
 .forecast-icon {
@@ -113,10 +113,10 @@ a {
   transition: all 200ms ease-in;
 }
 .weekday-text {
-  font-size: 20px;
+  font-size: 18px;
 }
 .forecast-temp-low .forecast-temp-high {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .github-link {

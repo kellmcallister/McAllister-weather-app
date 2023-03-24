@@ -14,6 +14,25 @@ function searchCity(event) {
   }
   axios.get(apiUrl).then(showTemperature);
 }
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-form");
+  let forecastHTML = `<div class="row">`;
+  let forecastDays = ["Sat", "Sun", "Mon"];
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+  <img class="forecast-icon" src="https://openweathermap.org/img/wn/10d@2x.png"/>
+  <div class="weekday-text">${day}</div>
+  <span class="forecast-temp-low">58°</span> - <span class="forecast-temp-high"> 85°</span>
+  </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#current-temp-number");
   temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}°`;
@@ -117,3 +136,5 @@ convertToC.addEventListener("click", convertCelcius);
 
 let convertToF = document.querySelector("#temp-f");
 convertToF.addEventListener("click", convertFahrenheit);
+
+displayForecast();
