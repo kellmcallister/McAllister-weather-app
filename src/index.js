@@ -15,6 +15,13 @@ function searchCity(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function formatOpenWeatherDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function getForecast(coordinates) {
   let apiKey = "2ff29bed3181c3526c35cc5408037f85";
   let units = "imperial";
@@ -23,18 +30,27 @@ function getForecast(coordinates) {
 }
 
 function displayForecast(response) {
+  let dayArray = response.data.daily;
   let forecastElement = document.querySelector("#forecast-form");
   let forecastHTML = `<div class="row">`;
-  let forecastDays = ["Sat", "Sun", "Mon"];
-  forecastDays.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  dayArray.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
     <div class="col-2">
-  <img class="forecast-icon" src="https://openweathermap.org/img/wn/10d@2x.png"/>
-  <div class="weekday-text">${day}</div>
-  <span class="forecast-temp-low">58°</span> - <span class="forecast-temp-high"> 85°</span>
+  <img class="forecast-icon" src="https://openweathermap.org/img/wn/${
+    day.weather[0].icon
+  }@2x.png"/>
+  <div class="weekday-text">${formatOpenWeatherDay(day.dt)}</div>
+  <span class="forecast-temp-low">${Math.round(
+    day.temp.min
+  )}°</span> - <span class="forecast-temp-high"> ${Math.round(
+          day.temp.max
+        )}°</span>
   </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
