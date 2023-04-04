@@ -106,6 +106,7 @@ function updateCurrentCity(response) {
   currentIcon.setAttribute("alt", response.data.weather[0].description);
   fahrenheitTemp = response.data.main.temp;
   windImperial = response.data.wind.speed;
+  getForecast(response.data.coord);
 }
 function convertCelcius(event) {
   event.preventDefault();
